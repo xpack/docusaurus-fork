@@ -1,6 +1,6 @@
 {
-  "name": "@docusaurus/theme-classic",
-  "version": "3.1.0",
+  "name": "@xpack/docusaurus-theme-classic",
+  "version": "3.1.0-1",
   "description": "Classic theme for Docusaurus",
   "main": "lib/index.js",
   "types": "src/theme-classic.d.ts",
@@ -9,15 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/docusaurus.git",
+    "url": "https://github.com/xpack/docusaurus-fork.git",
     "directory": "packages/docusaurus-theme-classic"
   },
   "license": "MIT",
-  "scripts": {
+  "$scripts": {
     "build": "tsc --build && node ../../admin/scripts/copyUntypedFiles.js && prettier --config ../../.prettierrc --write \"lib/theme/**/*.js\"",
     "watch": "run-p -c copy:watch build:watch",
     "build:watch": "tsc --build --watch",
-    "copy:watch": "node ../../admin/scripts/copyUntypedFiles.js --watch"
+    "copy:watch": "node ../../admin/scripts/copyUntypedFiles.js --watch",
+    "npm-install": "npm install"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "npm-install": "npm install",
+    "deep-clean": "rm -rf node_modules package-lock.json lib"
   },
   "dependencies": {
     "@docusaurus/core": "3.1.0",
@@ -47,6 +54,7 @@
     "utility-types": "^3.10.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "@types/mdx-js__react": "^1.5.5",
     "@types/nprogress": "^0.2.0",
     "@types/prismjs": "^1.26.0",
