@@ -61,7 +61,7 @@ export default async function pluginContentBlog(
     contentPath: path.resolve(siteDir, options.path),
     contentPathLocalized: getPluginI18nPath({
       localizationDir,
-      pluginName: 'docusaurus-plugin-content-blog',
+      pluginName: 'xpack-docusaurus-plugin-content-blog',
       pluginId: options.id,
     }),
   };
@@ -69,7 +69,7 @@ export default async function pluginContentBlog(
 
   const pluginDataDirRoot = path.join(
     generatedFilesDir,
-    'docusaurus-plugin-content-blog',
+    'xpack-docusaurus-plugin-content-blog',
   );
   const dataDir = path.join(pluginDataDirRoot, pluginId);
   const aliasedSource = (source: string) =>
@@ -81,7 +81,7 @@ export default async function pluginContentBlog(
   });
 
   return {
-    name: 'docusaurus-plugin-content-blog',
+    name: 'xpack-docusaurus-plugin-content-blog',
 
     getPathsToWatch() {
       const {include} = options;
