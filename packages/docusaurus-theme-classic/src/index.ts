@@ -137,7 +137,7 @@ export default function themeClassic(
   const {direction} = localeConfigs[currentLocale]!;
 
   return {
-    name: 'docusaurus-theme-classic',
+    name: 'xpack-docusaurus-theme-classic',
 
     getThemePath() {
       return '../lib/theme';
