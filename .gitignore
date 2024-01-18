@@ -22,12 +22,12 @@ types
 test-website
 test-website-in-workspace
 
-packages/create-docusaurus/lib/
-packages/lqip-loader/lib/
-packages/docusaurus/lib/
-packages/docusaurus-*/lib/*
-packages/eslint-plugin/lib/
-packages/stylelint-copyright/lib/
+# packages/create-docusaurus/lib/
+# packages/lqip-loader/lib/
+# packages/docusaurus/lib/
+# packages/docusaurus-*/lib/*
+# packages/eslint-plugin/lib/
+# packages/stylelint-copyright/lib/
 
 website/netlifyDeployPreview/*
 website/changelog
