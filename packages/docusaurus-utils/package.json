@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "npm-install": "npm install",
-    "deep-clean": "rm -rf node_modules package-lock.json lib"
+    "deep-clean": "rm -rf node_modules package-lock.json lib",
+    "npm-install": "npm install"
   },
   "publishConfig": {
     "access": "public"
