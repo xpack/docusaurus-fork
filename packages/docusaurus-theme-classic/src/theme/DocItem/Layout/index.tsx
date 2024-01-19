@@ -7,8 +7,8 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {useWindowSize} from '@docusaurus/theme-common';
-import {useDoc} from '@docusaurus/theme-common/internal';
+import {useWindowSize} from '@xpack/docusaurus-theme-common';
+import {useDoc} from '@xpack/docusaurus-theme-common/internal';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';

@@ -6,11 +6,11 @@
  */
 
 import React, {type ReactNode} from 'react';
-import {useThemeConfig, ErrorCauseBoundary} from '@docusaurus/theme-common';
+import {useThemeConfig, ErrorCauseBoundary} from '@xpack/docusaurus-theme-common';
 import {
   splitNavbarItems,
   useNavbarMobileSidebar,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import NavbarItem, {type Props as NavbarItemConfig} from '@theme/NavbarItem';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import SearchBar from '@theme/SearchBar';

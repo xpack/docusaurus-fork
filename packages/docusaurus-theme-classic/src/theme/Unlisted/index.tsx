@@ -12,7 +12,7 @@ import {
   UnlistedBannerTitle,
   UnlistedBannerMessage,
   UnlistedMetadata,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import Admonition from '@theme/Admonition';
 import type {Props} from '@theme/Unlisted';
 

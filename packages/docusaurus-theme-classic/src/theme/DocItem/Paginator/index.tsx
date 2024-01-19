@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {useDoc} from '@docusaurus/theme-common/internal';
+import {useDoc} from '@xpack/docusaurus-theme-common/internal';
 import DocPaginator from '@theme/DocPaginator';
 
 /**

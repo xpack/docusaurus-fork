@@ -11,7 +11,7 @@ import {
   PageMetadata,
   HtmlClassNameProvider,
   ThemeClassNames,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import Layout from '@theme/Layout';
 import MDXContent from '@theme/MDXContent';
 import TOC from '@theme/TOC';

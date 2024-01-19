@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {ThemedComponent} from '@docusaurus/theme-common';
+import {ThemedComponent} from '@xpack/docusaurus-theme-common';
 import type {Props} from '@theme/ThemedImage';
 
 export default function ThemedImage(props: Props): JSX.Element {

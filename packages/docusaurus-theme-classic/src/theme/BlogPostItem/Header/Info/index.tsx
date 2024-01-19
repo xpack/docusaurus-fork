@@ -8,8 +8,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import {translate} from '@docusaurus/Translate';
-import {usePluralForm} from '@docusaurus/theme-common';
-import {useBlogPost} from '@docusaurus/theme-common/internal';
+import {usePluralForm} from '@xpack/docusaurus-theme-common';
+import {useBlogPost} from '@xpack/docusaurus-theme-common/internal';
 import type {Props} from '@theme/BlogPostItem/Header/Info';
 
 import styles from './styles.module.css';

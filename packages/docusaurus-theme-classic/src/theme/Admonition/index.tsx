@@ -6,7 +6,7 @@
  */
 
 import React, {type ComponentType} from 'react';
-import {processAdmonitionProps} from '@docusaurus/theme-common';
+import {processAdmonitionProps} from '@xpack/docusaurus-theme-common';
 import type {Props} from '@theme/Admonition';
 import AdmonitionTypes from '@theme/Admonition/Types';
 

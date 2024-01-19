@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {useColorMode, useThemeConfig} from '@docusaurus/theme-common';
+import {useColorMode, useThemeConfig} from '@xpack/docusaurus-theme-common';
 import ColorModeToggle from '@theme/ColorModeToggle';
 import type {Props} from '@theme/Navbar/ColorModeToggle';
 import styles from './styles.module.css';

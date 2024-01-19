@@ -8,7 +8,7 @@
 import {useMemo} from 'react';
 import {useLocation} from '@docusaurus/router';
 import {isSamePath} from './routesUtils';
-import type {BlogSidebarItem} from '@docusaurus/plugin-content-blog';
+import type {BlogSidebarItem} from '@xpack/docusaurus-plugin-content-blog';
 
 function isVisible(item: BlogSidebarItem, pathname: string): boolean {
   if (item.unlisted && !isSamePath(item.permalink, pathname)) {

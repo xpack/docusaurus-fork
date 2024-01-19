@@ -12,7 +12,7 @@ import {
   HtmlClassNameProvider,
   ThemeClassNames,
   translateTagsPageTitle,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import BlogLayout from '@theme/BlogLayout';
 import TagsListByLetter from '@theme/TagsListByLetter';
 import type {Props} from '@theme/BlogTagsListPage';

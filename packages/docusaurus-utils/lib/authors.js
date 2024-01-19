@@ -6,16 +6,31 @@
  * LICENSE file in the root directory of this source tree.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAuthorVisibility = exports.groupAuthoredItems = exports.normalizeFrontMatterAuthors = void 0;
+exports.getAuthorVisibility = exports.groupAuthoredItems = exports.normalizeFrontMatterAuthors = exports.makeUrlFromName = void 0;
 const tslib_1 = require("tslib");
-// packages/docusaurus-utils/src/tags.ts
 const lodash_1 = tslib_1.__importDefault(require("lodash"));
 const urlUtils_1 = require("./urlUtils");
+/**
+ * Generate an URL from an author name.
+ * Remove diacritics and change spaces to dashes.
+ * @param name
+ * @returns
+ */
+function makeUrlFromName(name) {
+    return name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
+        .replaceAll(' ', '-')
+        .replaceAll(/[-][-]*/g, '-')
+        .replaceAll(/[^0-9a-z-]/g, '');
+}
+exports.makeUrlFromName = makeUrlFromName;
 function normalizeFrontMatterAuthor(authorsPath, frontMatterAuthor) {
     function toAuthorObject(authorString) {
         return {
-            label: authorString,
-            permalink: lodash_1.default.kebabCase(authorString),
+            name: authorString,
+            permalink: makeUrlFromName(authorString),
         };
     }
     // TODO maybe make ensure the permalink is valid url path?
@@ -29,10 +44,13 @@ function normalizeFrontMatterAuthor(authorsPath, frontMatterAuthor) {
         ? toAuthorObject(frontMatterAuthor)
         : frontMatterAuthor;
     return {
-        label: author.label,
-        permalink: normalizeAuthorPermalink(author.permalink),
+        label: author.name || '???',
+        permalink: normalizeAuthorPermalink(author.permalink || '???'),
     };
 }
+let isString = ((value) => {
+    return (typeof value === 'string' || value instanceof String);
+});
 /**
  * Takes author objects as they are defined in front matter, and normalizes each
  * into a standard author object. The permalink is created by appending the
@@ -47,7 +65,9 @@ function normalizeFrontMatterAuthors(
 authorsPath, 
 /** Can be `undefined`, so that we can directly pipe in `frontMatter.authors`. */
 frontMatterAuthors = []) {
-    const authors = frontMatterAuthors.map((author) => normalizeFrontMatterAuthor(authorsPath, author));
+    const authors = frontMatterAuthors
+        .filter((author) => isString(isString) || author.hasOwnProperty('name'))
+        .map((author) => normalizeFrontMatterAuthor(authorsPath, author));
     return lodash_1.default.uniqBy(authors, (author) => author.permalink);
 }
 exports.normalizeFrontMatterAuthors = normalizeFrontMatterAuthors;
@@ -73,12 +93,14 @@ getItemAuthors) {
             // TODO: it's not really clear what should be the behavior if 2 authors have
             // the same permalink but the label is different for each
             // For now, the first author found wins
-            result[_a = author.permalink] ?? (result[_a] = {
-                author,
-                items: [],
-            });
-            // Add item to group
-            result[author.permalink].items.push(item);
+            if (author.permalink) {
+                result[_a = author.permalink] ?? (result[_a] = {
+                    author,
+                    items: [],
+                });
+                // Add item to group
+                result[author.permalink].items.push(item);
+            }
         });
     });
     // If user add twice the same author to a md doc (weird but possible),

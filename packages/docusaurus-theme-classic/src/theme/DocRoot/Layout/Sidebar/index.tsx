@@ -7,8 +7,8 @@
 
 import React, {type ReactNode, useState, useCallback} from 'react';
 import clsx from 'clsx';
-import {prefersReducedMotion, ThemeClassNames} from '@docusaurus/theme-common';
-import {useDocsSidebar} from '@docusaurus/theme-common/internal';
+import {prefersReducedMotion, ThemeClassNames} from '@xpack/docusaurus-theme-common';
+import {useDocsSidebar} from '@xpack/docusaurus-theme-common/internal';
 import {useLocation} from '@docusaurus/router';
 import DocSidebar from '@theme/DocSidebar';
 import ExpandButton from '@theme/DocRoot/Layout/Sidebar/ExpandButton';

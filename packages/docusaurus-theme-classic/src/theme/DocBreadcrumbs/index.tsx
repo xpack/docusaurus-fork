@@ -7,11 +7,11 @@
 
 import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
 import {
   useSidebarBreadcrumbs,
   useHomePageRoute,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import HomeBreadcrumbItem from '@theme/DocBreadcrumbs/Items/Home';

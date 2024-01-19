@@ -15,7 +15,7 @@ import React, {
 } from 'react';
 import {useHistory} from '@docusaurus/router';
 import useIsomorphicLayoutEffect from '@docusaurus/useIsomorphicLayoutEffect';
-import {useQueryStringValue} from '@docusaurus/theme-common/internal';
+import {useQueryStringValue} from '@xpack/docusaurus-theme-common/internal';
 import {duplicates, useStorageSlot} from '../index';
 
 /**

@@ -41,7 +41,7 @@ function getBlogContentPaths(siteDir: string): BlogContentPaths {
       siteDir,
       'i18n',
       'en',
-      'docusaurus-plugin-content-blog',
+      'xpack-docusaurus-plugin-content-blog',
     ),
   };
 }

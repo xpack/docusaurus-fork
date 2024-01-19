@@ -11,8 +11,8 @@ import {
   NavbarSecondaryMenuFiller,
   type NavbarSecondaryMenuComponent,
   ThemeClassNames,
-} from '@docusaurus/theme-common';
-import {useNavbarMobileSidebar} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common';
+import {useNavbarMobileSidebar} from '@xpack/docusaurus-theme-common/internal';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import type {Props} from '@theme/DocSidebar/Mobile';
 

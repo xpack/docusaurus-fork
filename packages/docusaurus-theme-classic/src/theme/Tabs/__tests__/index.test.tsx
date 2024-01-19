@@ -7,7 +7,7 @@
 
 import React, {type ReactNode} from 'react';
 import renderer from 'react-test-renderer';
-import {ScrollControllerProvider} from '@docusaurus/theme-common/internal';
+import {ScrollControllerProvider} from '@xpack/docusaurus-theme-common/internal';
 import {StaticRouter} from 'react-router-dom';
 import Tabs from '../index';
 import TabItem from '../../TabItem';

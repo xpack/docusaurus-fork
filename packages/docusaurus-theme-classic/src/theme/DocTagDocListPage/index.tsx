@@ -13,7 +13,7 @@ import {
   HtmlClassNameProvider,
   ThemeClassNames,
   usePluralForm,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import Translate, {translate} from '@docusaurus/Translate';
 import SearchMetadata from '@theme/SearchMetadata';
 import type {Props} from '@theme/DocTagDocListPage';

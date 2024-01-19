@@ -8,7 +8,7 @@
 import path from 'path';
 import vfile from 'to-vfile';
 
-import {simpleHash} from '@docusaurus/utils';
+import {simpleHash} from '@xpack/docusaurus-utils';
 import footnoteIDFixer from '../footnoteIDFixer';
 
 const processFixture = async (name: string) => {

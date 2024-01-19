@@ -7,7 +7,7 @@
 
 import React from 'react';
 
-import {isMultiColumnFooterLinks} from '@docusaurus/theme-common';
+import {isMultiColumnFooterLinks} from '@xpack/docusaurus-theme-common';
 import FooterLinksMultiColumn from '@theme/Footer/Links/MultiColumn';
 import FooterLinksSimple from '@theme/Footer/Links/Simple';
 import type {Props} from '@theme/Footer/Links';

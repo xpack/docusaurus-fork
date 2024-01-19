@@ -7,8 +7,8 @@
 
 import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
-import {HtmlClassNameProvider, ThemeClassNames} from '@docusaurus/theme-common';
-import {BlogPostProvider, useBlogPost} from '@docusaurus/theme-common/internal';
+import {HtmlClassNameProvider, ThemeClassNames} from '@xpack/docusaurus-theme-common';
+import {BlogPostProvider, useBlogPost} from '@xpack/docusaurus-theme-common/internal';
 import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
@@ -16,7 +16,7 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 import type {Props} from '@theme/BlogPostPage';
 import Unlisted from '@theme/Unlisted';
-import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
+import type {BlogSidebar} from '@xpack/docusaurus-plugin-content-blog';
 
 function BlogPostPageContent({
   sidebar,

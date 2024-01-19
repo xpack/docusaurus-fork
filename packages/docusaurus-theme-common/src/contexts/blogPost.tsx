@@ -8,7 +8,7 @@
 import React, {useMemo, type ReactNode, useContext} from 'react';
 import {ReactContextError} from '../utils/reactUtils';
 
-import type {PropBlogPostContent} from '@docusaurus/plugin-content-blog';
+import type {PropBlogPostContent} from '@xpack/docusaurus-plugin-content-blog';
 
 /**
  * The React context value returned by the `useBlogPost()` hook.

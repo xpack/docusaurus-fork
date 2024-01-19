@@ -8,7 +8,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
-import {PageMetadata} from '@docusaurus/theme-common';
+import {PageMetadata} from '@xpack/docusaurus-theme-common';
 import Layout from '@theme/Layout';
 import type {ArchiveBlogPost, Props} from '@theme/BlogArchivePage';
 import Heading from '@theme/Heading';
@@ -27,8 +27,11 @@ function Year({year, posts}: YearProp) {
       <ul>
         {posts.map((post) => (
           <li key={post.metadata.date}>
-            <Link to={post.metadata.permalink}>
+            {/* <Link to={post.metadata.permalink}>
               {post.metadata.formattedDate} - {post.metadata.title}
+            </Link> */}
+            <Link to={post.metadata.permalink}>
+              {post.metadata.title}
             </Link>
           </li>
         ))}
@@ -55,7 +58,9 @@ function YearsSection({years}: {years: YearProp[]}) {
 
 function listPostsByYears(blogPosts: readonly ArchiveBlogPost[]): YearProp[] {
   const postsByYear = blogPosts.reduce((posts, post) => {
-    const year = post.metadata.date.split('-')[0]!;
+    // const year = post.metadata.date.split('-')[0];
+    const dateISO = post.metadata.eventDateISO ?? post.metadata.date
+    const year = dateISO.split('-')[0];
     const yearPosts = posts.get(year) ?? [];
     return posts.set(year, [post, ...yearPosts]);
   }, new Map<string, ArchiveBlogPost[]>());

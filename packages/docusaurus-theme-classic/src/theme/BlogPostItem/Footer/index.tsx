@@ -7,12 +7,16 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {useBlogPost} from '@docusaurus/theme-common/internal';
+// import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
+import {ThemeClassNames, useBlogPost} from '@xpack/docusaurus-theme-common/internal';
 import EditThisPage from '@theme/EditThisPage';
 import TagsListInline from '@theme/TagsListInline';
+import AuthorsListInline from '@theme/AuthorsListInline';
 import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink';
 
 import styles from './styles.module.css';
+
+import LastUpdated from '@theme/LastUpdated';
 
 export default function BlogPostItemFooter(): JSX.Element | null {
   const {metadata, isBlogPostPage} = useBlogPost();
@@ -29,6 +33,10 @@ export default function BlogPostItemFooter(): JSX.Element | null {
     return null;
   }
 
+  const lastUpdatedAt = metadata.lastUpdatedAt;
+  const lastUpdatedBy = metadata.lastUpdatedBy
+  const formattedLastUpdatedAt = metadata.formattedLastUpdatedAt;
+
   return (
     <footer
       className={clsx(
@@ -40,12 +48,29 @@ export default function BlogPostItemFooter(): JSX.Element | null {
           <TagsListInline tags={tags} />
         </div>
       )}
-
-      {isBlogPostPage && editUrl && (
-        <div className="col margin-top--sm">
-          <EditThisPage editUrl={editUrl} />
+      {!truncatedPost && tagsExists && (
+        <div className={clsx('col', {'col--9': truncatedPost})}>
+          <AuthorsListInline authors={authors} />
         </div>
       )}
+
+      <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, 'row')}>
+        {isBlogPostPage && editUrl && (
+          <div className="col margin-top--sm">
+            <EditThisPage editUrl={editUrl} />
+          </div>
+        )}
+
+        <div className={clsx('col', styles.lastUpdated)}>
+          {(lastUpdatedAt || lastUpdatedBy) && (!truncatedPost) && (
+            <LastUpdated
+              lastUpdatedAt={lastUpdatedAt}
+              formattedLastUpdatedAt={formattedLastUpdatedAt}
+              lastUpdatedBy={lastUpdatedBy}
+            />
+          )}
+        </div>
+      </div>
 
       {truncatedPost && (
         <div

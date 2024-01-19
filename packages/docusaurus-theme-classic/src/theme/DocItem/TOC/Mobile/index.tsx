@@ -7,8 +7,8 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {useDoc} from '@docusaurus/theme-common/internal';
+import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
+import {useDoc} from '@xpack/docusaurus-theme-common/internal';
 
 import TOCCollapsible from '@theme/TOCCollapsible';
 

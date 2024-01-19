@@ -6,9 +6,38 @@
  */
 /** What the user configures. */
 export type Author = {
-    label: string;
-    /** Permalink to this author's page, without the `/authors/` base path. */
-    permalink: string;
+    /**
+     * If `name` doesn't exist, an `imageURL` is expected.
+     */
+    name?: string;
+    /**
+     * The image path could be collocated, in which case
+     * `metadata.assets.authorsImageUrls` should be used instead. If `imageURL`
+     * doesn't exist, a `name` is expected.
+     */
+    imageURL?: string;
+    /**
+     * Used to generate the author's link.
+     */
+    url?: string;
+    /**
+     * Used as a subtitle for the author, e.g. "maintainer of Docusaurus"
+     */
+    title?: string;
+    /**
+     * Mainly used for RSS feeds; if `url` doesn't exist, `email` can be used
+     * to generate a fallback `mailto:` URL.
+     */
+    email?: string;
+    /**
+     * Available only when name is defined.
+     */
+    permalink?: string;
+    /**
+     * Unknown keys are allowed, so that we can pass custom fields to authors,
+     * e.g., `twitter`.
+     */
+    [key: string]: unknown;
 };
 /** What the authors list page should know about each author. */
 export type AuthorsListItem = Author & {
@@ -23,6 +52,13 @@ export type AuthorModule = AuthorsListItem & {
     unlisted: boolean;
 };
 export type FrontMatterAuthor = string | Author;
+/**
+ * Generate an URL from an author name.
+ * Remove diacritics and change spaces to dashes.
+ * @param name
+ * @returns
+ */
+export declare function makeUrlFromName(name: string): string;
 /**
  * Takes author objects as they are defined in front matter, and normalizes each
  * into a standard author object. The permalink is created by appending the

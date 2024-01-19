@@ -10,7 +10,7 @@ import type {
   PluginOptions,
   BlogContent,
   BlogPaginated,
-} from '@docusaurus/plugin-content-blog';
+} from '@xpack/docusaurus-plugin-content-blog';
 
 function translateListPage(
   blogListPaginated: BlogPaginated[],

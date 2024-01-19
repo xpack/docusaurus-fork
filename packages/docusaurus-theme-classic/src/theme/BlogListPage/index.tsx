@@ -13,7 +13,7 @@ import {
   PageMetadata,
   HtmlClassNameProvider,
   ThemeClassNames,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import BlogLayout from '@theme/BlogLayout';
 import BlogListPaginator from '@theme/BlogListPaginator';
 import SearchMetadata from '@theme/SearchMetadata';

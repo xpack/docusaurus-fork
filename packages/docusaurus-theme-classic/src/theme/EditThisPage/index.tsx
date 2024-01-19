@@ -7,7 +7,7 @@
 
 import React from 'react';
 import Translate from '@docusaurus/Translate';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
 import Link from '@docusaurus/Link';
 import IconEdit from '@theme/Icon/Edit';
 import type {Props} from '@theme/EditThisPage';

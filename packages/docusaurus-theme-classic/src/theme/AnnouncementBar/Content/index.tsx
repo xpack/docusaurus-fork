@@ -7,7 +7,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {useThemeConfig} from '@docusaurus/theme-common';
+import {useThemeConfig} from '@xpack/docusaurus-theme-common';
 import type {Props} from '@theme/AnnouncementBar/Content';
 import styles from './styles.module.css';
 

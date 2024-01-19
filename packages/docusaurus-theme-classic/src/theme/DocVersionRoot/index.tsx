@@ -6,11 +6,11 @@
  */
 
 import React from 'react';
-import {HtmlClassNameProvider, PageMetadata} from '@docusaurus/theme-common';
+import {HtmlClassNameProvider, PageMetadata} from '@xpack/docusaurus-theme-common';
 import {
   docVersionSearchTag,
   DocsVersionProvider,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import renderRoutes from '@docusaurus/renderRoutes';
 import SearchMetadata from '@theme/SearchMetadata';
 

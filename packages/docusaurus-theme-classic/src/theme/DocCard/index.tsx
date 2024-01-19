@@ -11,7 +11,7 @@ import Link from '@docusaurus/Link';
 import {
   findFirstSidebarItemLink,
   useDocById,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import {translate} from '@docusaurus/Translate';
 

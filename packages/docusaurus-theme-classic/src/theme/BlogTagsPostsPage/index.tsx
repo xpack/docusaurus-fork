@@ -13,7 +13,7 @@ import {
   HtmlClassNameProvider,
   ThemeClassNames,
   usePluralForm,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import Link from '@docusaurus/Link';
 import BlogLayout from '@theme/BlogLayout';
 import BlogListPaginator from '@theme/BlogListPaginator';

@@ -14,7 +14,7 @@ import {
 import {themes} from 'prism-react-renderer';
 import {ThemeConfigSchema, DEFAULT_CONFIG, validateOptions} from '../options';
 import type {Options, PluginOptions} from '@docusaurus/theme-classic';
-import type {ThemeConfig} from '@docusaurus/theme-common';
+import type {ThemeConfig} from '@xpack/docusaurus-theme-common';
 import type {Validate} from '@docusaurus/types';
 
 function testValidateThemeConfig(partialThemeConfig: {[key: string]: unknown}) {

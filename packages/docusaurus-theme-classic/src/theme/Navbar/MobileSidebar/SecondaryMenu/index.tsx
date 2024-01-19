@@ -6,8 +6,8 @@
  */
 
 import React, {type ComponentProps} from 'react';
-import {useThemeConfig} from '@docusaurus/theme-common';
-import {useNavbarSecondaryMenu} from '@docusaurus/theme-common/internal';
+import {useThemeConfig} from '@xpack/docusaurus-theme-common';
+import {useNavbarSecondaryMenu} from '@xpack/docusaurus-theme-common/internal';
 import Translate from '@docusaurus/Translate';
 
 function SecondaryMenuBackButton(props: ComponentProps<'button'>) {

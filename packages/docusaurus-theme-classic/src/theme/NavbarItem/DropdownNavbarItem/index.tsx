@@ -11,8 +11,8 @@ import {
   isRegexpStringMatch,
   useCollapsible,
   Collapsible,
-} from '@docusaurus/theme-common';
-import {isSamePath, useLocalPathname} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common';
+import {isSamePath, useLocalPathname} from '@xpack/docusaurus-theme-common/internal';
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem, {type LinkLikeNavbarItemProps} from '@theme/NavbarItem';
 import type {

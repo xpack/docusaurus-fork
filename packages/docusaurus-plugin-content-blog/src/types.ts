@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import type {BrokenMarkdownLink, ContentPaths} from '@docusaurus/utils';
+import type {BrokenMarkdownLink, ContentPaths} from '@xpack/docusaurus-utils';
 
 export type BlogContentPaths = ContentPaths;
 

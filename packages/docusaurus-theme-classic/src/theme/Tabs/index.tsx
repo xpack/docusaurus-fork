@@ -12,7 +12,7 @@ import {
   useTabs,
   sanitizeTabsChildren,
   type TabItemProps,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import type {Props} from '@theme/Tabs';
 import styles from './styles.module.css';

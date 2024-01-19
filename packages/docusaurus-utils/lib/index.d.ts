@@ -12,6 +12,7 @@ export { removeSuffix, removePrefix, mapAsyncSequential, findAsyncSequential, } 
 export { normalizeUrl, getEditUrl, fileToPath, encodePath, isValidPathname, resolvePathname, parseURLPath, serializeURLPath, addLeadingSlash, addTrailingSlash, removeTrailingSlash, hasSSHProtocol, buildHttpsUrl, buildSshUrl, } from './urlUtils';
 export type { URLPath } from './urlUtils';
 export { type Tag, type TagsListItem, type TagModule, type FrontMatterTag, normalizeFrontMatterTags, groupTaggedItems, getTagVisibility, } from './tags';
+export { type Author, type AuthorsListItem, type AuthorModule, type FrontMatterAuthor, normalizeFrontMatterAuthors, groupAuthoredItems, getAuthorVisibility, } from './authors';
 export { parseMarkdownHeadingId, escapeMarkdownHeadingIds, unwrapMdxCodeBlocks, admonitionTitleToDirectiveLabel, createExcerpt, DEFAULT_PARSE_FRONT_MATTER, parseMarkdownContentTitle, parseMarkdownFile, writeMarkdownHeadingId, type WriteHeadingIDOptions, } from './markdownUtils';
 export { type ContentPaths, type BrokenMarkdownLink, replaceMarkdownLinks, } from './markdownLinks';
 export { type SluggerOptions, type Slugger, createSlugger } from './slugger';

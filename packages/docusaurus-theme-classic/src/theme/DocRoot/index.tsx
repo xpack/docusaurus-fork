@@ -7,11 +7,11 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {HtmlClassNameProvider, ThemeClassNames} from '@docusaurus/theme-common';
+import {HtmlClassNameProvider, ThemeClassNames} from '@xpack/docusaurus-theme-common';
 import {
   DocsSidebarProvider,
   useDocRootMetadata,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import DocRootLayout from '@theme/DocRoot/Layout';
 import NotFoundContent from '@theme/NotFound/Content';
 import type {Props} from '@theme/DocRoot';

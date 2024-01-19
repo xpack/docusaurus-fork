@@ -68,6 +68,15 @@ export {
   getTagVisibility,
 } from './tags';
 export {
+  type Author,
+  type AuthorsListItem,
+  type AuthorModule,
+  type FrontMatterAuthor,
+  normalizeFrontMatterAuthors,
+  groupAuthoredItems,
+  getAuthorVisibility,
+} from './authors';
+export {
   parseMarkdownHeadingId,
   escapeMarkdownHeadingIds,
   unwrapMdxCodeBlocks,

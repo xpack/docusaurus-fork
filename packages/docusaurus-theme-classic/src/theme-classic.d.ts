@@ -9,7 +9,7 @@
 
 /// <reference types="@docusaurus/module-type-aliases" />
 /// <reference types="@docusaurus/plugin-content-docs" />
-/// <reference types="@docusaurus/plugin-content-blog" />
+/// <reference types="@xpack/docusaurus-plugin-content-blog" />
 /// <reference types="@docusaurus/plugin-content-pages" />
 
 // This file, like all the other ambient declaration files for plugins, is
@@ -20,7 +20,7 @@
 // our theme shadowing—we probably need the user to specify multiple theme paths
 // in their tsconfig.
 
-declare module '@docusaurus/theme-classic' {
+declare module '@xpack/docusaurus-theme-classic' {
   import type {LoadContext, Plugin, PluginModule} from '@docusaurus/types';
 
   export type PluginOptions = {
@@ -186,7 +186,7 @@ declare module '@theme/BackToTopButton' {
 }
 
 declare module '@theme/BlogListPaginator' {
-  import type {BlogPaginatedMetadata} from '@docusaurus/plugin-content-blog';
+  import type {BlogPaginatedMetadata} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     readonly metadata: BlogPaginatedMetadata;
@@ -195,7 +195,7 @@ declare module '@theme/BlogListPaginator' {
 }
 
 declare module '@theme/BlogSidebar/Desktop' {
-  import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
+  import type {BlogSidebar} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     readonly sidebar: BlogSidebar;
@@ -205,7 +205,7 @@ declare module '@theme/BlogSidebar/Desktop' {
 }
 
 declare module '@theme/BlogSidebar/Mobile' {
-  import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
+  import type {BlogSidebar} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     readonly sidebar: BlogSidebar;
@@ -215,7 +215,7 @@ declare module '@theme/BlogSidebar/Mobile' {
 }
 
 declare module '@theme/BlogSidebar' {
-  import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
+  import type {BlogSidebar} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     readonly sidebar?: BlogSidebar;
@@ -237,7 +237,7 @@ declare module '@theme/BlogPostItem' {
 
 declare module '@theme/BlogPostItems' {
   import type {ComponentType, ReactNode} from 'react';
-  import type {PropBlogPostContent} from '@docusaurus/plugin-content-blog';
+  import type {PropBlogPostContent} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     items: readonly {content: PropBlogPostContent}[];
@@ -279,7 +279,7 @@ declare module '@theme/BlogPostItem/Header/Info' {
 }
 
 declare module '@theme/BlogPostItem/Header/Author' {
-  import type {PropBlogPostContent} from '@docusaurus/plugin-content-blog';
+  import type {PropBlogPostContent} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     readonly author: PropBlogPostContent['metadata']['authors'][number];
@@ -338,7 +338,7 @@ declare module '@theme/BlogPostPaginator' {
 declare module '@theme/BlogLayout' {
   import type {ReactNode} from 'react';
   import type {Props as LayoutProps} from '@theme/Layout';
-  import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
+  import type {BlogSidebar} from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props extends LayoutProps {
     readonly sidebar?: BlogSidebar;
@@ -695,7 +695,7 @@ declare module '@theme/Footer' {
 }
 
 declare module '@theme/Footer/Logo' {
-  import type {FooterLogo} from '@docusaurus/theme-common';
+  import type {FooterLogo} from '@xpack/docusaurus-theme-common';
 
   export interface Props {
     readonly logo: FooterLogo;
@@ -713,7 +713,7 @@ declare module '@theme/Footer/Copyright' {
 }
 
 declare module '@theme/Footer/LinkItem' {
-  import type {FooterLinkItem} from '@docusaurus/theme-common';
+  import type {FooterLinkItem} from '@xpack/docusaurus-theme-common';
 
   export interface Props {
     readonly item: FooterLinkItem;
@@ -736,7 +736,7 @@ declare module '@theme/Footer/Layout' {
 }
 
 declare module '@theme/Footer/Links' {
-  import type {Footer} from '@docusaurus/theme-common';
+  import type {Footer} from '@xpack/docusaurus-theme-common';
 
   export interface Props {
     readonly links: Footer['links'];
@@ -746,7 +746,7 @@ declare module '@theme/Footer/Links' {
 }
 
 declare module '@theme/Footer/Links/MultiColumn' {
-  import type {MultiColumnFooter} from '@docusaurus/theme-common';
+  import type {MultiColumnFooter} from '@xpack/docusaurus-theme-common';
 
   export interface Props {
     readonly columns: MultiColumnFooter['links'];
@@ -756,7 +756,7 @@ declare module '@theme/Footer/Links/MultiColumn' {
 }
 
 declare module '@theme/Footer/Links/Simple' {
-  import type {SimpleFooter} from '@docusaurus/theme-common';
+  import type {SimpleFooter} from '@xpack/docusaurus-theme-common';
 
   export interface Props {
     readonly links: SimpleFooter['links'];
@@ -1245,7 +1245,7 @@ declare module '@theme/Mermaid' {
 }
 
 declare module '@theme/TabItem' {
-  import type {TabItemProps} from '@docusaurus/theme-common/internal';
+  import type {TabItemProps} from '@xpack/docusaurus-theme-common/internal';
 
   export interface Props extends TabItemProps {}
 
@@ -1253,7 +1253,7 @@ declare module '@theme/TabItem' {
 }
 
 declare module '@theme/Tabs' {
-  import type {TabsProps} from '@docusaurus/theme-common/internal';
+  import type {TabsProps} from '@xpack/docusaurus-theme-common/internal';
 
   export interface Props extends TabsProps {}
 
@@ -1274,7 +1274,7 @@ declare module '@theme/ThemedImage' {
 }
 
 declare module '@theme/Details' {
-  import {Details, type DetailsProps} from '@docusaurus/theme-common/Details';
+  import {Details, type DetailsProps} from '@xpack/docusaurus-theme-common/Details';
 
   export interface Props extends DetailsProps {}
   export default Details;
@@ -1296,7 +1296,7 @@ declare module '@theme/TOCItems' {
 }
 
 declare module '@theme/TOCItems/Tree' {
-  import type {TOCTreeNode} from '@docusaurus/theme-common/internal';
+  import type {TOCTreeNode} from '@xpack/docusaurus-theme-common/internal';
 
   export interface Props {
     readonly toc: readonly TOCTreeNode[];
@@ -1361,7 +1361,7 @@ declare module '@theme/TOCCollapsible/CollapseButton' {
 }
 
 declare module '@theme/ColorModeToggle' {
-  import type {ColorMode} from '@docusaurus/theme-common';
+  import type {ColorMode} from '@xpack/docusaurus-theme-common';
 
   export interface Props {
     readonly className?: string;
@@ -1485,7 +1485,7 @@ declare module '@theme/Icon/WordWrap' {
 }
 
 declare module '@theme/TagsListByLetter' {
-  import type {TagsListItem} from '@docusaurus/utils';
+  import type {TagsListItem} from '@xpack/docusaurus-utils';
 
   export interface Props {
     readonly tags: readonly TagsListItem[];
@@ -1494,7 +1494,7 @@ declare module '@theme/TagsListByLetter' {
 }
 
 declare module '@theme/TagsListInline' {
-  import type {Tag} from '@docusaurus/utils';
+  import type {Tag} from '@xpack/docusaurus-utils';
 
   export interface Props {
     readonly tags: readonly Tag[];
@@ -1503,12 +1503,39 @@ declare module '@theme/TagsListInline' {
 }
 
 declare module '@theme/Tag' {
-  import type {TagsListItem} from '@docusaurus/utils';
+  import type {TagsListItem} from '@xpack/docusaurus-utils';
   import type {Optional} from 'utility-types';
 
   export interface Props extends Optional<TagsListItem, 'count'> {}
 
   export default function Tag(props: Props): JSX.Element;
+}
+
+declare module '@theme/AuthorsListByLetter' {
+  import type {AuthorsListItem} from '@xpack/docusaurus-utils';
+
+  export interface Props {
+    readonly authors: readonly AuthorsListItem[];
+  }
+  export default function AuthorsListByLetter(props: Props): JSX.Element;
+}
+
+declare module '@theme/AuthorsListInline' {
+  import type {Author} from '@xpack/docusaurus-utils';
+
+  export interface Props {
+    readonly authors: readonly Author[];
+  }
+  export default function AuthorsListInline(props: Props): JSX.Element;
+}
+
+declare module '@theme/Author' {
+  import type {AuthorsListItem} from '@xpack/docusaurus-utils';
+  import type {Optional} from 'utility-types';
+
+  export interface Props extends Optional<AuthorsListItem, 'count'> {}
+
+  export default function Author(props: Props): JSX.Element;
 }
 
 declare module '@theme/Unlisted' {

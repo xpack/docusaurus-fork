@@ -9,7 +9,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
-import {useVisibleBlogSidebarItems} from '@docusaurus/theme-common/internal';
+import {useVisibleBlogSidebarItems} from '@xpack/docusaurus-theme-common/internal';
 import type {Props} from '@theme/BlogSidebar/Desktop';
 
 import styles from './styles.module.css';

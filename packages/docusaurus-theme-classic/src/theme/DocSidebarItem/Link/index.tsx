@@ -7,8 +7,8 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {isActiveSidebarItem} from '@docusaurus/theme-common/internal';
+import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
+import {isActiveSidebarItem} from '@xpack/docusaurus-theme-common/internal';
 import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';

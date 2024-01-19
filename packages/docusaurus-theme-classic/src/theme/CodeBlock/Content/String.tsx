@@ -7,14 +7,14 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {useThemeConfig, usePrismTheme} from '@docusaurus/theme-common';
+import {useThemeConfig, usePrismTheme} from '@xpack/docusaurus-theme-common';
 import {
   parseCodeBlockTitle,
   parseLanguage,
   parseLines,
   containsLineNumbers,
   useCodeWordWrap,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import {Highlight, type Language} from 'prism-react-renderer';
 import Line from '@theme/CodeBlock/Line';
 import CopyButton from '@theme/CodeBlock/CopyButton';

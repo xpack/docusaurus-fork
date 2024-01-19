@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import {useThemeConfig} from '@docusaurus/theme-common';
-import {useAnnouncementBar} from '@docusaurus/theme-common/internal';
+import {useThemeConfig} from '@xpack/docusaurus-theme-common';
+import {useAnnouncementBar} from '@xpack/docusaurus-theme-common/internal';
 import AnnouncementBarCloseButton from '@theme/AnnouncementBar/CloseButton';
 import AnnouncementBarContent from '@theme/AnnouncementBar/Content';
 

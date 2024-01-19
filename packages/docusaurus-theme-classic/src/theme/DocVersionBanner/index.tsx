@@ -15,11 +15,11 @@ import {
   useDocVersionSuggestions,
   type GlobalVersion,
 } from '@docusaurus/plugin-content-docs/client';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
 import {
   useDocsPreferredVersion,
   useDocsVersion,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import type {Props} from '@theme/DocVersionBanner';
 import type {
   VersionBanner,

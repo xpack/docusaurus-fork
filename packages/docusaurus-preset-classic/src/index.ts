@@ -45,7 +45,7 @@ export default function preset(
   } = opts;
 
   const themes: PluginConfig[] = [];
-  themes.push(makePluginConfig('@docusaurus/theme-classic', theme));
+  themes.push(makePluginConfig('@xpack/docusaurus-theme-classic', theme));
   if (algolia) {
     themes.push(require.resolve('@docusaurus/theme-search-algolia'));
   }
@@ -65,7 +65,7 @@ export default function preset(
     plugins.push(makePluginConfig('@docusaurus/plugin-content-docs', docs));
   }
   if (blog !== false) {
-    plugins.push(makePluginConfig('@docusaurus/plugin-content-blog', blog));
+    plugins.push(makePluginConfig('@xpack/docusaurus-plugin-content-blog', blog));
   }
   if (pages !== false) {
     plugins.push(makePluginConfig('@docusaurus/plugin-content-pages', pages));

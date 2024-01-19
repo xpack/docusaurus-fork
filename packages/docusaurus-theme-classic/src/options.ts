@@ -7,8 +7,8 @@
 
 import {themes} from 'prism-react-renderer';
 import {Joi, URISchema} from '@docusaurus/utils-validation';
-import type {Options, PluginOptions} from '@docusaurus/theme-classic';
-import type {ThemeConfig} from '@docusaurus/theme-common';
+import type {Options, PluginOptions} from '@xpack/docusaurus-theme-classic';
+import type {ThemeConfig} from '@xpack/docusaurus-theme-common';
 import type {
   ThemeConfigValidationContext,
   OptionValidationContext,

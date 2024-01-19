@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {composeProviders} from '@docusaurus/theme-common';
+import {composeProviders} from '@xpack/docusaurus-theme-common';
 import {
   ColorModeProvider,
   AnnouncementBarProvider,
@@ -14,7 +14,7 @@ import {
   ScrollControllerProvider,
   NavbarProvider,
   PluginHtmlClassNameProvider,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import type {Props} from '@theme/Layout/Provider';
 
 const Provider = composeProviders([

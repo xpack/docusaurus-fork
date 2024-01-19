@@ -10,17 +10,18 @@ import fs from 'fs-extra';
 import logger from '@docusaurus/logger';
 import {Feed, type Author as FeedAuthor} from 'feed';
 import * as srcset from 'srcset';
-import {normalizeUrl, readOutputHTMLFile} from '@docusaurus/utils';
-import {blogPostContainerID} from '@docusaurus/utils-common';
+import {Author, normalizeUrl, readOutputHTMLFile} from '@xpack/docusaurus-utils';
+//import {blogPostContainerID} from '@xpack/docusaurus-utils-common';
+import { blogPostContainerID } from '@docusaurus/utils-common';
 import {load as cheerioLoad} from 'cheerio';
 import type {DocusaurusConfig} from '@docusaurus/types';
 import type {
   FeedType,
   PluginOptions,
-  Author,
+  // Author,
   BlogPost,
   BlogFeedItem,
-} from '@docusaurus/plugin-content-blog';
+} from '@xpack/docusaurus-plugin-content-blog';
 
 async function generateBlogFeed({
   blogPosts,
@@ -202,19 +203,19 @@ function shouldBeInFeed(blogPost: BlogPost): boolean {
 }
 
 export async function createBlogFeedFiles({
-  blogPosts: allBlogPosts,
+  blogPostsNewest,
   options,
   siteConfig,
   outDir,
   locale,
 }: {
-  blogPosts: BlogPost[];
+  blogPostsNewest: BlogPost[];
   options: PluginOptions;
   siteConfig: DocusaurusConfig;
   outDir: string;
   locale: string;
 }): Promise<void> {
-  const blogPosts = allBlogPosts.filter(shouldBeInFeed);
+  const blogPosts = blogPostsNewest.filter(shouldBeInFeed);
 
   const feed = await generateBlogFeed({
     blogPosts,

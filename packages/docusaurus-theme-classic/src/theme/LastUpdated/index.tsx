@@ -7,7 +7,7 @@
 
 import React from 'react';
 import Translate from '@docusaurus/Translate';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import {ThemeClassNames} from '@xpack/docusaurus-theme-common';
 import type {Props} from '@theme/LastUpdated';
 
 function LastUpdatedAtDate({

@@ -5,16 +5,44 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// packages/docusaurus-utils/src/tags.ts
-
 import _ from 'lodash';
 import {normalizeUrl} from './urlUtils';
 
 /** What the user configures. */
 export type Author = {
-  label: string;
-  /** Permalink to this author's page, without the `/authors/` base path. */
-  permalink: string;
+  /**
+   * If `name` doesn't exist, an `imageURL` is expected.
+   */
+  name?: string;
+  /**
+   * The image path could be collocated, in which case
+   * `metadata.assets.authorsImageUrls` should be used instead. If `imageURL`
+   * doesn't exist, a `name` is expected.
+   */
+  imageURL?: string;
+  /**
+   * Used to generate the author's link.
+   */
+  url?: string;
+  /**
+   * Used as a subtitle for the author, e.g. "maintainer of Docusaurus"
+   */
+  title?: string;
+  /**
+   * Mainly used for RSS feeds; if `url` doesn't exist, `email` can be used
+   * to generate a fallback `mailto:` URL.
+   */
+  email?: string;
+
+  /**
+   * Available only when name is defined.
+   */
+  permalink?: string;
+  /**
+   * Unknown keys are allowed, so that we can pass custom fields to authors,
+   * e.g., `twitter`.
+   */
+  [key: string]: unknown;
 };
 
 /** What the authors list page should know about each author. */
@@ -33,14 +61,30 @@ export type AuthorModule = AuthorsListItem & {
 
 export type FrontMatterAuthor = string | Author;
 
+/**
+ * Generate an URL from an author name.
+ * Remove diacritics and change spaces to dashes.
+ * @param name
+ * @returns
+ */
+export function makeUrlFromName(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replaceAll(' ', '-')
+    .replaceAll(/[-][-]*/g, '-')
+    .replaceAll(/[^0-9a-z-]/g, '');
+}
+
 function normalizeFrontMatterAuthor(
   authorsPath: string,
   frontMatterAuthor: FrontMatterAuthor,
 ): Author {
   function toAuthorObject(authorString: string): Author {
     return {
-      label: authorString,
-      permalink: _.kebabCase(authorString),
+      name: authorString,
+      permalink: makeUrlFromName(authorString),
     };
   }
 
@@ -58,10 +102,14 @@ function normalizeFrontMatterAuthor(
       : frontMatterAuthor;
 
   return {
-    label: author.label,
-    permalink: normalizeAuthorPermalink(author.permalink),
+    label: author.name || '???',
+    permalink: normalizeAuthorPermalink(author.permalink || '???'),
   };
 }
+
+let isString = ((value: any) => {
+  return (typeof value === 'string' || value instanceof String);
+});
 
 /**
  * Takes author objects as they are defined in front matter, and normalizes each
@@ -78,8 +126,10 @@ export function normalizeFrontMatterAuthors(
   /** Can be `undefined`, so that we can directly pipe in `frontMatter.authors`. */
   frontMatterAuthors: FrontMatterAuthor[] | undefined = [],
 ): Author[] {
-  const authors = frontMatterAuthors.map((author) =>
-    normalizeFrontMatterAuthor(authorsPath, author),
+  const authors = frontMatterAuthors
+    .filter((author) => isString(isString) || author.hasOwnProperty('name'))
+    .map((author) =>
+      normalizeFrontMatterAuthor(authorsPath, author),
   );
 
   return _.uniqBy(authors, (author) => author.permalink);
@@ -114,13 +164,15 @@ export function groupAuthoredItems<Item>(
       // TODO: it's not really clear what should be the behavior if 2 authors have
       // the same permalink but the label is different for each
       // For now, the first author found wins
-      result[author.permalink] ??= {
-        author,
-        items: [],
-      };
+      if (author.permalink) {
+        result[author.permalink] ??= {
+          author,
+          items: [],
+        };
 
-      // Add item to group
-      result[author.permalink]!.items.push(item);
+        // Add item to group
+        result[author.permalink]!.items.push(item);
+      }
     });
   });
 

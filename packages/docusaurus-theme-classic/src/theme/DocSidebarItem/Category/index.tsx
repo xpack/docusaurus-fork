@@ -13,13 +13,13 @@ import {
   usePrevious,
   Collapsible,
   useCollapsible,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import {
   isActiveSidebarItem,
   findFirstSidebarItemLink,
   useDocSidebarItemsExpandedState,
   isSamePath,
-} from '@docusaurus/theme-common/internal';
+} from '@xpack/docusaurus-theme-common/internal';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import useIsBrowser from '@docusaurus/useIsBrowser';

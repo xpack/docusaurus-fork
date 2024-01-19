@@ -13,12 +13,12 @@ import {
   RouteBasePathSchema,
   URISchema,
 } from '@docusaurus/utils-validation';
-import {GlobExcludeDefault} from '@docusaurus/utils';
+import {GlobExcludeDefault} from '@xpack/docusaurus-utils';
 import type {
   PluginOptions,
   Options,
   FeedType,
-} from '@docusaurus/plugin-content-blog';
+} from '@xpack/docusaurus-plugin-content-blog';
 import type {OptionValidationContext} from '@docusaurus/types';
 
 export const DEFAULT_OPTIONS: PluginOptions = {
@@ -32,6 +32,8 @@ export const DEFAULT_OPTIONS: PluginOptions = {
   showReadingTime: true,
   blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
   blogTagsListComponent: '@theme/BlogTagsListPage',
+  blogAuthorsPostsComponent: '@theme/BlogAuthorsPostsPage',
+  blogAuthorsListComponent: '@theme/BlogTagsListPage', // '@theme/BlogAuthorsListPage',
   blogPostComponent: '@theme/BlogPostPage',
   blogListComponent: '@theme/BlogListPage',
   blogArchiveComponent: '@theme/BlogArchivePage',
@@ -44,12 +46,17 @@ export const DEFAULT_OPTIONS: PluginOptions = {
   exclude: GlobExcludeDefault,
   routeBasePath: 'blog',
   tagsBasePath: 'tags',
+  authorsBasePath: 'authors',
   archiveBasePath: 'archive',
+  pageBasePath: 'page',
   path: 'blog',
   editLocalizedFiles: false,
   authorsMapPath: 'authors.yml',
   readingTime: ({content, defaultReadingTime}) => defaultReadingTime({content}),
   sortPosts: 'descending',
+
+  showLastUpdateTime: false,
+  showLastUpdateAuthor: false,
 };
 
 const PluginOptionSchema = Joi.object<PluginOptions>({
@@ -59,6 +66,8 @@ const PluginOptionSchema = Joi.object<PluginOptions>({
     .allow(null),
   routeBasePath: RouteBasePathSchema.default(DEFAULT_OPTIONS.routeBasePath),
   tagsBasePath: Joi.string().default(DEFAULT_OPTIONS.tagsBasePath),
+  authorsBasePath: Joi.string().default(DEFAULT_OPTIONS.authorsBasePath),
+  pageBasePath: Joi.string().default(DEFAULT_OPTIONS.pageBasePath),
   include: Joi.array().items(Joi.string()).default(DEFAULT_OPTIONS.include),
   exclude: Joi.array().items(Joi.string()).default(DEFAULT_OPTIONS.exclude),
   postsPerPage: Joi.alternatives()
@@ -71,6 +80,12 @@ const PluginOptionSchema = Joi.object<PluginOptions>({
   ),
   blogTagsPostsComponent: Joi.string().default(
     DEFAULT_OPTIONS.blogTagsPostsComponent,
+  ),
+  blogAuthorsListComponent: Joi.string().default(
+    DEFAULT_OPTIONS.blogAuthorsListComponent,
+  ),
+  blogAuthorsPostsComponent: Joi.string().default(
+    DEFAULT_OPTIONS.blogAuthorsPostsComponent,
   ),
   blogArchiveComponent: Joi.string().default(
     DEFAULT_OPTIONS.blogArchiveComponent,
@@ -132,7 +147,12 @@ const PluginOptionSchema = Joi.object<PluginOptions>({
   sortPosts: Joi.string()
     .valid('descending', 'ascending')
     .default(DEFAULT_OPTIONS.sortPosts),
-}).default(DEFAULT_OPTIONS);
+
+    showLastUpdateTime: Joi.bool().default(DEFAULT_OPTIONS.showLastUpdateTime),
+    showLastUpdateAuthor: Joi.bool().default(
+      DEFAULT_OPTIONS.showLastUpdateAuthor,
+    ),
+  }).default(DEFAULT_OPTIONS);
 
 export function validateOptions({
   validate,

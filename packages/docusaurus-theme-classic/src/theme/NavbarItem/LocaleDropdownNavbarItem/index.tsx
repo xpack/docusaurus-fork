@@ -7,7 +7,7 @@
 
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {useAlternatePageUtils} from '@docusaurus/theme-common/internal';
+import {useAlternatePageUtils} from '@xpack/docusaurus-theme-common/internal';
 import {translate} from '@docusaurus/Translate';
 import {useLocation} from '@docusaurus/router';
 import DropdownNavbarItem from '@theme/NavbarItem/DropdownNavbarItem';

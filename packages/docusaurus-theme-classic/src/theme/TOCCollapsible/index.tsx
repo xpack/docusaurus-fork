@@ -7,7 +7,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import {useCollapsible, Collapsible} from '@docusaurus/theme-common';
+import {useCollapsible, Collapsible} from '@xpack/docusaurus-theme-common';
 import TOCItems from '@theme/TOCItems';
 import CollapseButton from '@theme/TOCCollapsible/CollapseButton';
 import type {Props} from '@theme/TOCCollapsible';

@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-declare module '@docusaurus/plugin-content-blog' {
-  import type {LoadedMDXContent} from '@docusaurus/mdx-loader';
-  import type {MDXOptions} from '@docusaurus/mdx-loader';
-  import type {FrontMatterTag, Tag} from '@docusaurus/utils';
-  import type {DocusaurusConfig, Plugin, LoadContext} from '@docusaurus/types';
-  import type {Item as FeedItem} from 'feed';
-  import type {Overwrite} from 'utility-types';
+declare module '@xpack/docusaurus-plugin-content-blog' {
+  import type { LoadedMDXContent } from '@docusaurus/mdx-loader';
+  import type { MDXOptions } from '@docusaurus/mdx-loader';
+  import type { FrontMatterAuthor, Author, FrontMatterTag, Tag } from '@xpack/docusaurus-utils';
+  import type { DocusaurusConfig, Plugin, LoadContext } from '@docusaurus/types';
+  import type { Item as FeedItem } from 'feed';
+  import type { Overwrite } from 'utility-types';
 
   export type Assets = {
     /**
@@ -34,37 +34,6 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
      * should be accessed through `authors.imageURL`.
      */
     authorsImageUrls: (string | undefined)[];
-  };
-
-  export type Author = {
-    /**
-     * If `name` doesn't exist, an `imageURL` is expected.
-     */
-    name?: string;
-    /**
-     * The image path could be collocated, in which case
-     * `metadata.assets.authorsImageUrls` should be used instead. If `imageURL`
-     * doesn't exist, a `name` is expected.
-     */
-    imageURL?: string;
-    /**
-     * Used to generate the author's link.
-     */
-    url?: string;
-    /**
-     * Used as a subtitle for the author, e.g. "maintainer of Docusaurus"
-     */
-    title?: string;
-    /**
-     * Mainly used for RSS feeds; if `url` doesn't exist, `email` can be used
-     * to generate a fallback `mailto:` URL.
-     */
-    email?: string;
-    /**
-     * Unknown keys are allowed, so that we can pass custom fields to authors,
-     * e.g., `twitter`.
-     */
-    [key: string]: unknown;
   };
 
   /**
@@ -154,6 +123,8 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
     toc_min_heading_level?: number;
     /** Maximum TOC heading level. Must be between 2 and 6. */
     toc_max_heading_level?: number;
+
+    last_update?: FileChange;
   };
 
   export type BlogPostFrontMatterAuthor = Author & {
@@ -178,7 +149,24 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
     | BlogPostFrontMatterAuthor
     | (string | BlogPostFrontMatterAuthor)[];
 
-  export type BlogPostMetadata = {
+  export type FileChange = {
+    author?: string;
+    /** Date can be any
+     * [parsable date string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse).
+     */
+    date?: Date | string;
+  };
+
+  export type LastUpdateData = {
+    /** A timestamp in **seconds**, directly acquired from `git log`. */
+    lastUpdatedAt?: number;
+    /** `lastUpdatedAt` formatted as a date according to the current locale. */
+    formattedLastUpdatedAt?: string;
+    /** The author's name directly acquired from `git log`. */
+    lastUpdatedBy?: string;
+  };
+
+  export type BlogPostMetadata = LastUpdateData & {
     /** Path to the Markdown source, with `@site` alias. */
     readonly source: string;
     /**
@@ -218,25 +206,30 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
      * Used in pagination. Generated after the other metadata, so not readonly.
      * Content is just a subset of another post's metadata.
      */
-    nextItem?: {readonly title: string; readonly permalink: string};
+    nextItem?: { readonly title: string; readonly permalink: string };
     /**
      * Used in pagination. Generated after the other metadata, so not readonly.
      * Content is just a subset of another post's metadata.
      */
-    prevItem?: {readonly title: string; readonly permalink: string};
+    prevItem?: { readonly title: string; readonly permalink: string };
     /**
      * Author metadata, normalized. Should be used in joint with
      * `assets.authorsImageUrls` on client side.
      */
     readonly authors: Author[];
     /** Front matter, as-is. */
-    readonly frontMatter: BlogPostFrontMatter & {[key: string]: unknown};
+    readonly frontMatter: BlogPostFrontMatter & { [key: string]: unknown };
     /** Tags, normalized. */
     readonly tags: Tag[];
     /**
      * Marks the post as unlisted and visibly hides it unless directly accessed.
      */
     readonly unlisted: boolean;
+
+    readonly eventDateISO?: string,
+    readonly eventEndDateISO?: string,
+    readonly eventDateFormatted?: string,
+    readonly eventIntervalFormatted?: string
   };
   /**
    * @returns The edit URL that's directly plugged into metadata.
@@ -312,7 +305,7 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
     /** Markdown content. */
     content: string;
     /** Front matter. */
-    frontMatter?: BlogPostFrontMatter & {[key: string]: unknown};
+    frontMatter?: BlogPostFrontMatter & { [key: string]: unknown };
     /** Options accepted by ngryman/reading-time. */
     options?: ReadingTimeOptions;
   }) => number;
@@ -354,6 +347,10 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
      * `routeBasePath`. **DO NOT** include a trailing slash.
      */
     tagsBasePath: string;
+
+    authorsBasePath: string;
+
+    pageBasePath: string;
     /**
      * URL route for the archive section of your blog. Will be appended to
      * `routeBasePath`. **DO NOT** include a trailing slash. Use `null` to
@@ -383,6 +380,10 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
     blogTagsListComponent: string;
     /** Root component of the "posts containing tag" page. */
     blogTagsPostsComponent: string;
+    /** Root component of the authors list page. */
+    blogAuthorsListComponent: string;
+    /** Root component of the "posts containing author" page. */
+    blogAuthorsPostsComponent: string;
     /** Root component of the blog archive page. */
     blogArchiveComponent: string;
     /** Blog page title for better SEO. */
@@ -419,6 +420,11 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
     readingTime: ReadingTimeFunctionOption;
     /** Governs the direction of blog post sorting. */
     sortPosts: 'ascending' | 'descending';
+
+    /**	Whether to display the last date the doc was updated. */
+    showLastUpdateTime?: boolean;
+    /** Whether to display the author who last updated the doc. */
+    showLastUpdateAuthor?: boolean;
   };
 
   /**
@@ -456,9 +462,12 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
   export type BlogContent = {
     blogSidebarTitle: string;
     blogPosts: BlogPost[];
+    blogPostsNewest: BlogPost[];
     blogListPaginated: BlogPaginated[];
     blogTags: BlogTags;
     blogTagsListPath: string;
+    blogAuthors: BlogAuthors;
+    blogAuthorsListPath: string;
   };
 
   export type BlogTags = {
@@ -466,6 +475,17 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
   };
 
   export type BlogTag = Tag & {
+    /** Blog post permalinks. */
+    items: string[];
+    pages: BlogPaginated[];
+    unlisted: boolean;
+  };
+
+  export type BlogAuthors = {
+    [permalink: string]: BlogAuthor;
+  };
+
+  export type BlogAuthor = Author & {
     /** Blog post permalinks. */
     items: string[];
     pages: BlogPaginated[];
@@ -521,18 +541,27 @@ yarn workspace v1.22.19image` is a collocated image path, this entry will be the
     Assets
   >;
 
+  export type ChronologyRecord = {
+    interval: string,
+    title: string,
+    permalink: string,
+    isInternational: boolean
+  }
+
   export default function pluginContentBlog(
     context: LoadContext,
     options: PluginOptions,
   ): Promise<Plugin<BlogContent>>;
 }
 
+// ---------------------------------------------------------------------------
+
 declare module '@theme/BlogPostPage' {
   import type {
     BlogPostFrontMatter,
     BlogSidebar,
     PropBlogPostContent,
-  } from '@docusaurus/plugin-content-blog';
+  } from '@xpack/docusaurus-plugin-content-blog';
 
   export type FrontMatter = BlogPostFrontMatter;
 
@@ -553,11 +582,11 @@ declare module '@theme/BlogPostPage/Metadata' {
 }
 
 declare module '@theme/BlogListPage' {
-  import type {Content} from '@theme/BlogPostPage';
+  import type { Content } from '@theme/BlogPostPage';
   import type {
     BlogSidebar,
     BlogPaginatedMetadata,
-  } from '@docusaurus/plugin-content-blog';
+  } from '@xpack/docusaurus-plugin-content-blog';
 
   export interface Props {
     /** Blog sidebar. */
@@ -568,15 +597,15 @@ declare module '@theme/BlogListPage' {
      * Array of blog posts included on this page. Every post's metadata is also
      * available.
      */
-    readonly items: readonly {readonly content: Content}[];
+    readonly items: readonly { readonly content: Content }[];
   }
 
   export default function BlogListPage(props: Props): JSX.Element;
 }
 
 declare module '@theme/BlogTagsListPage' {
-  import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
-  import type {TagsListItem} from '@docusaurus/utils';
+  import type { BlogSidebar } from '@xpack/docusaurus-plugin-content-blog';
+  import type { TagsListItem } from '@xpack/docusaurus-utils';
 
   export interface Props {
     /** Blog sidebar. */
@@ -589,12 +618,12 @@ declare module '@theme/BlogTagsListPage' {
 }
 
 declare module '@theme/BlogTagsPostsPage' {
-  import type {Content} from '@theme/BlogPostPage';
+  import type { Content } from '@theme/BlogPostPage';
   import type {
     BlogSidebar,
     BlogPaginatedMetadata,
-  } from '@docusaurus/plugin-content-blog';
-  import type {TagModule} from '@docusaurus/utils';
+  } from '@xpack/docusaurus-plugin-content-blog';
+  import type { TagModule } from '@xpack/docusaurus-utils';
 
   export interface Props {
     /** Blog sidebar. */
@@ -607,14 +636,53 @@ declare module '@theme/BlogTagsPostsPage' {
      * Array of blog posts included on this page. Every post's metadata is also
      * available.
      */
-    readonly items: readonly {readonly content: Content}[];
+    readonly items: readonly { readonly content: Content }[];
   }
 
   export default function BlogTagsPostsPage(props: Props): JSX.Element;
 }
 
+declare module '@theme/BlogAuthorsListPage' {
+  import type { BlogSidebar } from '@xpack/docusaurus-plugin-content-blog';
+  import type { AuthorsListItem } from '@xpack/docusaurus-utils';
+
+  export interface Props {
+    /** Blog sidebar. */
+    readonly sidebar: BlogSidebar;
+    /** All authors declared in this blog. */
+    readonly authors: AuthorsListItem[];
+  }
+
+  export default function BlogAuthorsListPage(props: Props): JSX.Element;
+}
+
+declare module '@theme/BlogAuthorsPostsPage' {
+  import type { Content } from '@theme/BlogPostPage';
+  import type {
+    BlogSidebar,
+    BlogPaginatedMetadata,
+  } from '@xpack/docusaurus-plugin-content-blog';
+  import type { AuthorModule } from '@xpack/docusaurus-utils';
+
+  export interface Props {
+    /** Blog sidebar. */
+    readonly sidebar: BlogSidebar;
+    /** Metadata of this author. */
+    readonly author: AuthorModule;
+    /** Looks exactly the same as the posts list page */
+    readonly listMetadata: BlogPaginatedMetadata;
+    /**
+     * Array of blog posts included on this page. Every post's metadata is also
+     * available.
+     */
+    readonly items: readonly { readonly content: Content }[];
+  }
+
+  export default function BlogAuthorsPostsPage(props: Props): JSX.Element;
+}
+
 declare module '@theme/BlogArchivePage' {
-  import type {Content} from '@theme/BlogPostPage';
+  import type { Content } from '@theme/BlogPostPage';
 
   /** We may add extra metadata or prune some metadata from here */
   export type ArchiveBlogPost = Content;

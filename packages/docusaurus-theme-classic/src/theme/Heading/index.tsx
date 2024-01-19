@@ -8,7 +8,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import {translate} from '@docusaurus/Translate';
-import {useThemeConfig} from '@docusaurus/theme-common';
+import {useThemeConfig} from '@xpack/docusaurus-theme-common';
 import Link from '@docusaurus/Link';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import type {Props} from '@theme/Heading';

@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import {PageMetadata} from '@docusaurus/theme-common';
-import {useBlogPost} from '@docusaurus/theme-common/internal';
+import {PageMetadata} from '@xpack/docusaurus-theme-common';
+import {useBlogPost} from '@xpack/docusaurus-theme-common/internal';
 
 export default function BlogPostPageMetadata(): JSX.Element {
   const {assets, metadata} = useBlogPost();

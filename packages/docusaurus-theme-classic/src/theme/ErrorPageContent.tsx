@@ -10,7 +10,7 @@ import Translate from '@docusaurus/Translate';
 import {
   ErrorBoundaryError,
   ErrorBoundaryTryAgainButton,
-} from '@docusaurus/theme-common';
+} from '@xpack/docusaurus-theme-common';
 import type {Props} from '@theme/Error';
 import Heading from '@theme/Heading';
 
