@@ -1,25 +1,28 @@
 {
-  "name": "@docusaurus/preset-classic",
-  "version": "3.1.0",
+  "name": "@xpack/docusaurus-preset-classic",
+  "version": "3.1.0-1",
   "description": "Classic preset for Docusaurus.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "deep-clean": "rm -rf node_modules package-lock.json lib",
+    "npm-install": "npm install",
+    "npm-link-deps": "npm link @xpack/docusaurus-plugin-content-blog @xpack/docusaurus-theme-classic @xpack/docusaurus-theme-common"
   },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/docusaurus.git",
+    "url": "https://github.com/xpack/docusaurus-fork.git",
     "directory": "packages/docusaurus-preset-classic"
   },
   "license": "MIT",
   "dependencies": {
     "@docusaurus/core": "3.1.0",
-    "@docusaurus/plugin-content-blog": "3.1.0",
+    "@xpack/docusaurus-plugin-content-blog": "https://gitpkg.now.sh/xpack/docusaurus-fork/packages/docusaurus-plugin-content-blog?xpack",
     "@docusaurus/plugin-content-docs": "3.1.0",
     "@docusaurus/plugin-content-pages": "3.1.0",
     "@docusaurus/plugin-debug": "3.1.0",
@@ -27,8 +30,8 @@
     "@docusaurus/plugin-google-gtag": "3.1.0",
     "@docusaurus/plugin-google-tag-manager": "3.1.0",
     "@docusaurus/plugin-sitemap": "3.1.0",
-    "@docusaurus/theme-classic": "3.1.0",
-    "@docusaurus/theme-common": "3.1.0",
+    "@xpack/docusaurus-theme-classic": "https://gitpkg.now.sh/xpack/docusaurus-fork/packages/docusaurus-theme-classic?xpack",
+    "@xpack/docusaurus-theme-common": "https://gitpkg.now.sh/xpack/docusaurus-fork/packages/docusaurus-theme-common?xpack",
     "@docusaurus/theme-search-algolia": "3.1.0",
     "@docusaurus/types": "3.1.0"
   },
