@@ -1,6 +1,6 @@
 {
-  "name": "@docusaurus/theme-common",
-  "version": "3.1.0",
+  "name": "@xpack/docusaurus-theme-common",
+  "version": "3.1.0-1",
   "description": "Common code for Docusaurus themes.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -13,29 +13,37 @@
     "./internal": "./lib/internal.js",
     "./Details": "./lib/components/Details/index.js"
   },
-  "scripts": {
+  "$scripts": {
     "build": "tsc && node ../../admin/scripts/copyUntypedFiles.js",
     "watch": "run-p -c copy:watch build:watch",
     "build:watch": "tsc --watch",
     "copy:watch": "node ../../admin/scripts/copyUntypedFiles.js --watch",
     "removeThemeInternalReexport": "node removeThemeInternalReexport.mjs"
   },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "npm-install": "npm install",
+    "npm-link-deps": "npm link @xpack/docusaurus-plugin-content-blog @xpack/docusaurus-utils",
+    "deep-clean": "rm -rf node_modules package-lock.json lib"
+  },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/docusaurus.git",
+    "url": "https://github.com/xpack/docusaurus-fork.git",
     "directory": "packages/docusaurus-theme-common"
   },
   "license": "MIT",
   "dependencies": {
     "@docusaurus/mdx-loader": "3.1.0",
     "@docusaurus/module-type-aliases": "3.1.0",
-    "@docusaurus/plugin-content-blog": "3.1.0",
+    "@xpack/docusaurus-plugin-content-blog": "https://gitpkg.now.sh/xpack/docusaurus-fork/packages/docusaurus-plugin-content-blog?xpack",
     "@docusaurus/plugin-content-docs": "3.1.0",
     "@docusaurus/plugin-content-pages": "3.1.0",
-    "@docusaurus/utils": "3.1.0",
+    "@docusaurus/theme-search-algolia": "3.1.0",
+    "@xpack/docusaurus-utils": "https://gitpkg.now.sh/xpack/docusaurus-fork/packages/docusaurus-utils?xpack",
     "@docusaurus/utils-common": "3.1.0",
     "@types/history": "^4.7.11",
     "@types/react": "*",
