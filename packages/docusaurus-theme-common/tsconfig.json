@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
     "noEmit": false,
     "incremental": true,
     "tsBuildInfoFile": "./lib/.tsbuildinfo",
